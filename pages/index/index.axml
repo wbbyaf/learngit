@@ -7,7 +7,7 @@
     <view a:for='{{dateArr}}' class='{{isToday == item.isToday ? "nowDay" : ""}}' data-date='{{item.isToday}}' data-day='{{item.dateNum}}' onTap="timeclick"> 
       <view class='date-head {{activity==item.isToday?"active":""}}'> 
           <view>{{item.dateNum}}</view>
-          <view class="tig green"></view>
+          <view a:if='{{item.hasTask=="ture"}}' class="tig  {{item.taskStatus==1 ?'red':(item.taskStatus === 2? 'green': (item.taskStatus ===3?'orange':''))}}"></view>
       </view> 
     </view>
   </view>

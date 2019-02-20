@@ -59,7 +59,7 @@
 }
 .date-box{
     font-size: 0;
-    padding: 10rpx 0;
+    padding: 10rpx 24rpx;
     background-color: #fff;
     position:relative;
 }
@@ -96,15 +96,17 @@
   left:50%;
   margin-left: -5rpx;
 }
+.red{
+  background: #f25643;
+}
 .green{
   background: #13bc82;
 }
-.date-weight{
-    font-size: 22rpx;
-    padding: 15rpx 0;
+.orange{
+  background: #ff943e;
 }
-.nowDay .date-weight{
-    color: #22A7F6;
+.nowDay .tig{
+    background: #fff;
 }
 
 .content_list{

@@ -1,6 +1,10 @@
 Page({
   data: {
     authCode:"",
+    userId:"",
+    userTypeCode:"",
+    userRoleCode:"",
+    pointstate:[{hasTask:"ture",taskStatus:1},{hasTask:"ture",taskStatus:2},{hasTask:"ture",taskStatus:3},{hasTask:"ture",taskStatus:4},{hasTask:"false",taskStatus:1},{hasTask:"false",taskStatus:1},{hasTask:"ture",taskStatus:2},{hasTask:"ture",taskStatus:3},{hasTask:"ture",taskStatus:1},{hasTask:"ture",taskStatus:1},{hasTask:"false",taskStatus:1},{hasTask:"ture",taskStatus:1},{hasTask:"false",taskStatus:1},{hasTask:"ture",taskStatus:1},{hasTask:"ture",taskStatus:2},{hasTask:"ture",taskStatus:3},{hasTask:"ture",taskStatus:4},{hasTask:"false",taskStatus:1},{hasTask:"false",taskStatus:1},{hasTask:"ture",taskStatus:2},{hasTask:"ture",taskStatus:3},{hasTask:"false",taskStatus:1},{hasTask:"false",taskStatus:1},{hasTask:"false",taskStatus:1},{hasTask:"ture",taskStatus:1},{hasTask:"false",taskStatus:1},{hasTask:"ture",taskStatus:2},{hasTask:"ture",taskStatus:3},{hasTask:"false",taskStatus:1},{hasTask:"ture",taskStatus:2},{hasTask:"ture",taskStatus:3}],
     nowtime:"",
     movestart:0,
     movestarty:0,
@@ -54,9 +58,8 @@ Page({
             })
             console.log(res)
             dd.httpRequest({
-                url: "https://gw.api.tbsandbox.com/router/rest",   // 自己配置的接口
+                url: "https://acs.wapa.taobao.com/gw/mtop.taobao.imf.isv.login/1.0/",   // 自己配置的接口
                 method: 'POST',
-                v: '1.0',
                 data: {
                     corpId:"ding4ccf801cff7fd7d835c2f4657eb6378f",
                     requestAuthCode: res.authCode,
@@ -64,10 +67,14 @@ Page({
                 dataType: 'json',
                 success: function(res) {
                     console.log('success',res)
-                    // let userId = res.data.result.userId;
-                    // _this.setData({
-                    //     userId:userId
-                    // })
+                    let userId = res.data.result.userId;
+                    let userTypeCode = res.data.result.userTypeCode;
+                    let userRoleCode = res.data.result.userRoleCode;
+                    _this.setData({
+                        userId:userId,
+                        userTypeCode:userTypeCode,
+                        userRoleCode:userRoleCode
+                    })
                 },
                 fail: function(res) {
                     console.log("httpRequestFail",res)
@@ -98,6 +105,45 @@ Page({
       isToday: '' + year + month + now.getDate()
     })
   },
+  setpoint:function (year,month) {
+    let dayNums = new Date(year, (month+1), 0).getDate();                //获取目标月有多少天
+    console.log("月数",dayNums);
+    let userId=this.data.userId;
+    let userTypeCode=this.data.userTypeCode;
+    let userRoleCode=this.data.userRoleCode;
+    let startDate=year + '-' + (month) + '-' + 1;
+    let endDate=year + '-' + (month) + '-' + dayNums;
+    console.log("开始",startDate,endDate);
+    dd.httpRequest({
+                url: "",   // 自己配置的接口
+                method: 'POST',
+                data: {
+                    startDate:startDate,
+                    endDate:endDate,
+                    userId:userId,
+                    userTypeCode:userTypeCode,
+                    userRoleCode:userRoleCode,
+                },
+                dataType: 'json',
+                success: function(res) {
+                    console.log('success',res)
+                    let date = res.data.date;
+                    let hasTask = res.data.hasTask;
+                    let taskStatus = res.data.taskStatus;
+                    _this.setData({
+                        userId:userId,
+                        userTypeCode:userTypeCode,
+                        userRoleCode:userRoleCode
+                    })
+                },
+                fail: function(res) {
+                    console.log("httpRequestFail",res)
+                },
+                complete: function(res) {
+                }
+
+            });
+  },
   dateInit: function (setYear, setMonth) {
     //全部时间的月份都是按0~11基准，显示月份才+1
     let dateArr = [];                        //需要遍历的日历数组数据
@@ -105,28 +151,33 @@ Page({
     let now = setYear ? new Date(setYear, setMonth) : new Date();
     let year = setYear || now.getFullYear();
     let nextYear = 0;
-    let month = setMonth || now.getMonth();                    //没有+1方便后面计算当月总天数
+    let month = setMonth || now.getMonth();     //没有+1方便后面计算当月总天数
     let nextMonth = (month + 1) > 11 ? 1 : (month + 1);
-    let startWeek = new Date(year + '/' + (month + 1) + '/' + 1).getDay()-1;                            //目标月1号对应的星期
-    let dayNums = new Date(year, nextMonth, 0).getDate();                //获取目标月有多少天
+    let startWeek = new Date(year + '/' + (month + 1) + '/' + 1).getDay()-1;     //目标月1号对应的星期
+    let dayNums = new Date(year, nextMonth, 0).getDate();      //获取目标月有多少天
     let obj = {};
     let num = 0;
-
-    if (month + 1 > 11) {
-      nextYear = year + 1;
-      dayNums = new Date(nextYear/nextMonth/ 0).getDate();
-    }
+    
+   this.setpoint(year,month);
+    // if (month+1 > 11) {
+    //   nextYear = year + 1;
+    //   dayNums = new Date(nextYear/nextMonth/ 0).getDate();
+    // }
     if(startWeek==-1){
       startWeek=6;
     }
     arrLen = startWeek + dayNums;
+    console.log(arrLen)
+    let pointstate=this.data.pointstate;
     for (let i = 0; i < arrLen; i++) {
       if (i >= startWeek) {
         num = i - startWeek + 1;
         obj = {
           isToday: '' + year + (month + 1) + num,
           dateNum: num,
-          weight: 5
+          weight: 5,
+          hasTask: pointstate[num-1].hasTask,
+          taskStatus:  pointstate[num-1].taskStatus
         }
       } else {
         obj = {};
@@ -136,7 +187,7 @@ Page({
     this.setData({
       dateArr: dateArr
     })
-
+    console.log(dateArr);
     let nowDate = new Date();
     let nowYear = nowDate.getFullYear();
     let nowMonth = nowDate.getMonth() + 1;
@@ -156,7 +207,7 @@ Page({
       })
     }
   },
-  timeclick:function(e){
+  timeclick:function(e){//时间点击函数
     console.log(e);
     let dataset=e.currentTarget.dataset.date;
     let year = this.data.year;
@@ -173,7 +224,7 @@ Page({
       activity:dataset
     })
   },
-  TouchStart:function(e){
+  TouchStart:function(e){//滑动函数
     let movestart=e.touches[0].pageX;
     let movestarty=e.touches[0].pageY;
     this.setData({
