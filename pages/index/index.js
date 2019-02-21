@@ -5,6 +5,7 @@ Page({
     userTypeCode:"",
     userRoleCode:"",
     pointstate:[{hasTask:"ture",taskStatus:1},{hasTask:"ture",taskStatus:2},{hasTask:"ture",taskStatus:3},{hasTask:"ture",taskStatus:4},{hasTask:"false",taskStatus:1},{hasTask:"false",taskStatus:1},{hasTask:"ture",taskStatus:2},{hasTask:"ture",taskStatus:3},{hasTask:"ture",taskStatus:1},{hasTask:"ture",taskStatus:1},{hasTask:"false",taskStatus:1},{hasTask:"ture",taskStatus:1},{hasTask:"false",taskStatus:1},{hasTask:"ture",taskStatus:1},{hasTask:"ture",taskStatus:2},{hasTask:"ture",taskStatus:3},{hasTask:"ture",taskStatus:4},{hasTask:"false",taskStatus:1},{hasTask:"false",taskStatus:1},{hasTask:"ture",taskStatus:2},{hasTask:"ture",taskStatus:3},{hasTask:"false",taskStatus:1},{hasTask:"false",taskStatus:1},{hasTask:"false",taskStatus:1},{hasTask:"ture",taskStatus:1},{hasTask:"false",taskStatus:1},{hasTask:"ture",taskStatus:2},{hasTask:"ture",taskStatus:3},{hasTask:"false",taskStatus:1},{hasTask:"ture",taskStatus:2},{hasTask:"ture",taskStatus:3}],
+    tasklist:[{taskId:1254256,taskName:"任务就是你任务就是你任务就是你",taskStatus:2,taskStatusName:"未开始",desc:"任务描述入仓1500件，都是合格的任务描述入仓1500件，都是合格的任务描述入仓1500件，都是合格的"},{taskId:5698210,taskName:"第二个任务第二个任务第二个任务第二个任务",taskStatus:3,taskStatusName:"未生产",desc:"任务描述入仓1000件，都是合格的任务描述入仓15件，都是合格的任务描述入仓0件，都是合格的"}],
     nowtime:"",
     movestart:0,
     movestarty:0,
@@ -144,6 +145,43 @@ Page({
 
             });
   },
+  clickpoint:function (data) {
+    let clickdata = data;                //获取目标月有多少天
+    // console.log("月数",dayNums);
+    let userId=this.data.userId;
+    let userTypeCode=this.data.userTypeCode;
+    let userRoleCode=this.data.userRoleCode;
+    dd.httpRequest({
+                url: "",   // 自己配置的接口
+                method: 'POST',
+                data: {
+                    date:clickdata,
+                    userId:userId,
+                    userTypeCode:userTypeCode,
+                    userRoleCode:userRoleCode,
+                },
+                dataType: 'json',
+                success: function(res) {
+                    console.log('success',res)
+                    let taskId = res.data.date;
+                    let taskName = res.data.hasTask;
+                    let taskStatus = res.data.taskStatus;
+                    let taskStatusName = res.data.taskStatus;
+                    let desc = res.data.taskStatus;
+                    _this.setData({
+                        userId:userId,
+                        userTypeCode:userTypeCode,
+                        userRoleCode:userRoleCode
+                    })
+                },
+                fail: function(res) {
+                    console.log("httpRequestFail",res)
+                },
+                complete: function(res) {
+                }
+
+            });
+  },
   dateInit: function (setYear, setMonth) {
     //全部时间的月份都是按0~11基准，显示月份才+1
     let dateArr = [];                        //需要遍历的日历数组数据
@@ -157,8 +195,9 @@ Page({
     let dayNums = new Date(year, nextMonth, 0).getDate();      //获取目标月有多少天
     let obj = {};
     let num = 0;
-    
-   this.setpoint(year,month);
+    let clickdata=year + '-' + (month + 1) + '-' +new Date().getDate();
+    this.clickpoint(clickdata);//初始化任务列表
+    this.setpoint(year,month);
     // if (month+1 > 11) {
     //   nextYear = year + 1;
     //   dayNums = new Date(nextYear/nextMonth/ 0).getDate();
@@ -223,6 +262,9 @@ Page({
       week:this.data.date[week],
       activity:dataset
     })
+    let clickdata=year + '-' + month + '-' +day;
+    console.log(clickdata)
+    this.clickpoint(clickdata);//重新渲染任务列表
   },
   TouchStart:function(e){//滑动函数
     let movestart=e.touches[0].pageX;
@@ -269,6 +311,19 @@ Page({
       })
       this.dateInit(year, month);
     }
+  },
+  LinkDetial:function(e){
+    let taskId=e.currentTarget.dataset.taskId
+    console.log(taskId);
+    dd.setStorage({
+      key: 'taskId',
+      data: {taskId: taskId},
+      success: function() {
+        dd.navigateTo ({
+          url: "/pages/detial/detial"
+        })
+      }
+    });
   },
 /*获取当前农历*/
 showCal:function (){ 

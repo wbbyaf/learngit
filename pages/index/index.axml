@@ -5,7 +5,7 @@
   <view class='date-box' onTouchStart='TouchStart' onTouchEnd='TouchEnd'>
     <text class="month_bg">{{month}}</text>
     <view a:for='{{dateArr}}' class='{{isToday == item.isToday ? "nowDay" : ""}}' data-date='{{item.isToday}}' data-day='{{item.dateNum}}' onTap="timeclick"> 
-      <view class='date-head {{activity==item.isToday?"active":""}}'> 
+      <view class="date-head {{activity==item.isToday?'active':''}} {{item.taskStatus==1 ?'reds':(item.taskStatus === 2? 'greens': (item.taskStatus ===3?'oranges':''))}}"> 
           <view>{{item.dateNum}}</view>
           <view a:if='{{item.hasTask=="ture"}}' class="tig  {{item.taskStatus==1 ?'red':(item.taskStatus === 2? 'green': (item.taskStatus ===3?'orange':''))}}"></view>
       </view> 
@@ -14,20 +14,12 @@
   <view class='date-show'>
     <view>{{year}}年{{month}}月{{day}}日 周{{week}}</view>
   </view>
-  <view class="content_list">
+  <view class="content_list {{item.taskStatus==1 ?'red':(item.taskStatus === 2? 'green': (item.taskStatus ===3?'orange':''))}}" a:for="{{tasklist}}" data-taskId='{{item.taskId}}' onTap="LinkDetial">
       <view class="product_top">
-        <text class="product_number">231569451684</text>
-        <text class="product_state">生产中</text>
+        <text class="product_number">{{item.taskId}}</text>
+        <text class="product_state">{{item.taskStatusName}}</text>
       </view>
-      <view class="product_text">全棉女士轻薄时尚堆堆袜</view>
-      <view class="product_operation">入仓1500</view>
-  </view>
-  <view class="content_list">
-      <view class="product_top">
-        <text class="product_number">231569451684</text>
-        <text class="product_state">生产中</text>
-      </view>
-      <view class="product_text">全棉女士轻薄时尚堆堆袜全棉女士轻薄时尚堆堆袜全棉女士轻薄时尚堆堆袜</view>
-      <view class="product_operation">入仓1500</view>
+      <view class="product_text">{{item.taskName}}</view>
+      <view class="product_operation">{{item.desc}}</view>
   </view>
 </view>

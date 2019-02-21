@@ -108,7 +108,33 @@
 .nowDay .tig{
     background: #fff;
 }
-
+.nowDay .reds{
+    background: #f25643;
+}
+.nowDay .greens{
+    background: #13bc82;
+}
+.nowDay .oranges{
+    background: #ff943e;
+}
+.red .product_state{
+  background: #f25643;
+}
+.green .product_state{
+  background: #13bc82;
+}
+.orange .product_state{
+  background: #ff943e;
+}
+.red.content_list{
+  border-left:12rpx solid #f25643;
+}
+.green.content_list{
+  border-left: 12rpx solid #13bc82;
+}
+.orange.content_list{
+  border-left:12rpx solid #ff943e;
+}
 .content_list{
   width:720rpx;
   height:auto;

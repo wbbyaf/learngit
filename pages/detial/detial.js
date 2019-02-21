@@ -5,7 +5,15 @@ Page({
     ]
   },
   onLoad() {
-  
+    dd.getStorage({
+      key: 'taskId',
+      success: function(res) {
+        dd.alert({content: '任务编码成：' + res.data.taskId});
+      },
+      fail: function(res){
+        dd.alert({content: res.errorMessage});
+      }
+    });
   },
   upimg:function(){
     dd.chooseImage({
