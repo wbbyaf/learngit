@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/detial/detial"
+  ],
+  "window": {
+    "defaultTitle": "日程"
+  },
+  "tabBar": {
+    "textColor": "#404040",
+    "selectedColor": "#108ee9",
+    "backgroundColor": "#F5F5F9",
+    "items": [
+      {
+        "pagePath": "pages/index/index",
+        "icon": "image/icon_component.png",
+        "activeIcon": "image/icon_component_HL.png",
+        "name": "主页"
+      },
+      {
+        "pagePath": "pages/detial/detial",
+        "icon": "image/icon_API.png",
+        "activeIcon": "image/icon_API_HL.png",
+        "name": "心选"
+      },
+      {
+        "pagePath": "pages/detial/detial",
+        "icon": "image/icon_biz.png",
+        "activeIcon": "image/icon_biz_HL.png",
+        "name": "业务"
+      }
+    ]
+  },
+  "debug":true
+}

@@ -1,0 +1,213 @@
+<view class="topbar">
+  <text class="s_line"></text>
+  <text class="top_number">23134589612</text>
+  <text class="top_text">全棉女士轻松活力堆堆袜</text>
+</view>
+<view class="detial">
+  <scroll-view scroll-y="{{true}}" class="detial_scroll">
+    <view class="detial_list">
+      <view class="list_left">
+        <view class="list_top">
+          <text class="list_top_title">原材料到仓</text><text class="list_top_tig">完成</text>
+        </view>
+        <view class="plant_time"><text>计划完成时间：</text><text>2018-01-20-11:21:30</text></view>
+        <view class="real_time"><text>实际完成时间：</text><text>2018-01-20-11:21:30</text></view>
+        <view class="point"></view>
+      </view>
+      <view class="list_right">
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+      </view>
+    </view>
+    <view class="detial_list">
+      <view class="list_left">
+        <view class="list_top">
+          <text class="list_top_title">原材料到仓</text><text class="list_top_tig">完成</text>
+        </view>
+        <view class="plant_time"><text>计划完成时间：</text><text>2018-01-20-11:21:30</text></view>
+        <view class="real_time"><text>实际完成时间：</text><text>2018-01-20-11:21:30</text></view>
+        <view class="point"></view>
+      </view>
+      <view class="list_right" onTap="lookimg">
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+      </view>
+    </view>
+    <view class="detial_list">
+      <view class="list_left">
+        <view class="list_top">
+          <text class="list_top_title">原材料到仓</text><text class="list_top_tig">完成</text>
+        </view>
+        <view class="plant_time"><text>计划完成时间：</text><text>2018-01-20-11:21:30</text></view>
+        <view class="real_time"><text>实际完成时间：</text><text>2018-01-20-11:21:30</text></view>
+        <view class="point"></view>
+      </view>
+      <view class="list_right" a:for="{{img}}">
+        <view class="detial_img" onTap="upimg">
+          <image src="{{item}}" mode="aspectFit"></image>
+        </view>
+      </view>
+    </view>
+    <view class="detial_list">
+      <view class="list_left">
+        <view class="list_top">
+          <text class="list_top_title">原材料到仓</text><text class="list_top_tig">完成</text>
+        </view>
+        <view class="plant_time"><text>计划完成时间：</text><text>2018-01-20-11:21:30</text></view>
+        <view class="real_time"><text>实际完成时间：</text><text>2018-01-20-11:21:30</text></view>
+        <view class="point"></view>
+      </view>
+      <view class="list_right">
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+      </view>
+    </view>
+    <view class="detial_list">
+      <view class="list_left">
+        <view class="list_top">
+          <text class="list_top_title">原材料到仓</text><text class="list_top_tig">完成</text>
+        </view>
+        <view class="plant_time"><text>计划完成时间：</text><text>2018-01-20-11:21:30</text></view>
+        <view class="real_time"><text>实际完成时间：</text><text>2018-01-20-11:21:30</text></view>
+        <view class="point"></view>
+      </view>
+      <view class="list_right">
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+      </view>
+    </view>
+    <view class="detial_list">
+      <view class="list_left">
+        <view class="list_top">
+          <text class="list_top_title">原材料到仓</text><text class="list_top_tig">完成</text>
+        </view>
+        <view class="plant_time"><text>计划完成时间：</text><text>2018-01-20-11:21:30</text></view>
+        <view class="real_time"><text>实际完成时间：</text><text>2018-01-20-11:21:30</text></view>
+        <view class="point"></view>
+      </view>
+      <view class="list_right">
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+      </view>
+    </view>
+    <view class="detial_list">
+      <view class="list_left">
+        <view class="list_top">
+          <text class="list_top_title">原材料到仓</text><text class="list_top_tig">完成</text>
+        </view>
+        <view class="plant_time"><text>计划完成时间：</text><text>2018-01-20-11:21:30</text></view>
+        <view class="real_time"><text>实际完成时间：</text><text>2018-01-20-11:21:30</text></view>
+        <view class="point"></view>
+      </view>
+      <view class="list_right">
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+      </view>
+    </view>
+    <view class="detial_list">
+      <view class="list_left">
+        <view class="list_top">
+          <text class="list_top_title">原材料到仓</text><text class="list_top_tig">完成</text>
+        </view>
+        <view class="plant_time"><text>计划完成时间：</text><text>2018-01-20-11:21:30</text></view>
+        <view class="real_time"><text>实际完成时间：</text><text>2018-01-20-11:21:30</text></view>
+        <view class="point"></view>
+      </view>
+      <view class="list_right">
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+      </view>
+    </view>
+    <view class="detial_list">
+      <view class="list_left">
+        <view class="list_top">
+          <text class="list_top_title">原材料到仓</text><text class="list_top_tig">完成</text>
+        </view>
+        <view class="plant_time"><text>计划完成时间：</text><text>2018-01-20-11:21:30</text></view>
+        <view class="real_time"><text>实际完成时间：</text><text>2018-01-20-11:21:30</text></view>
+        <view class="point"></view>
+      </view>
+      <view class="list_right">
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+      </view>
+    </view>
+    <view class="detial_list">
+      <view class="list_left">
+        <view class="list_top">
+          <text class="list_top_title">原材料到仓</text><text class="list_top_tig">完成</text>
+        </view>
+        <view class="plant_time"><text>计划完成时间：</text><text>2018-01-20-11:21:30</text></view>
+        <view class="real_time"><text>实际完成时间：</text><text>2018-01-20-11:21:30</text></view>
+        <view class="point"></view>
+      </view>
+      <view class="list_right">
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+        <view class="detial_img">
+          <image src="../../image/icon_API_HL.png" mode="aspectFit"></image>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
