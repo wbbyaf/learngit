@@ -88,12 +88,19 @@ page{
   height:70rpx;
   border-radius:70rpx;
   border:1rpx solid #eee;
+<<<<<<< HEAD
   float:left;
   margin-left: -10rpx;
   background: #fff;
   overflow: hidden;
   position:relative;
   z-index: 999;
+=======
+  float:right;
+  margin-left: -10rpx;
+  background: #fff;
+  overflow: hidden;
+>>>>>>> 9d68be664f89308f9e00e0da68f00a389e8f6be4
 }
 .detial_img image{
   width:100%;
@@ -103,6 +110,7 @@ page{
 .list_right{
   float:right;
   margin-top: 35rpx;
+<<<<<<< HEAD
   width:220rpx;
 }
 .list_right_swiper{
@@ -126,4 +134,6 @@ page{
 }
 .gray{
   background: #dde0eb;
+=======
+>>>>>>> 9d68be664f89308f9e00e0da68f00a389e8f6be4
 }
