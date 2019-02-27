@@ -34,11 +34,7 @@ Page({
   onLoad: function () {
     // dd.navigateTo({
     //   url: "/pages/detial/detial"
-<<<<<<< HEAD
     // })
-=======
-    // })//t.alicdn.com/t/gettime
->>>>>>> 9d68be664f89308f9e00e0da68f00a389e8f6be4
     let _this=this;
     // dd.httpRequest({
     //     url: "http://t.alicdn.com/t/gettime",   // 自己配置的接口

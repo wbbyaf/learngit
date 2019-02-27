@@ -1,6 +1,5 @@
 Page({
   data: {
-<<<<<<< HEAD
     itemlist:[
       {taskName:"原材料到仓1",taskStatus:4,taskStatusName:"已完成",planFinishiTime:"2018-01-20-11:21:30",actualFinishiTime:"2018-01-20-11:21:30",swiper_w:72,img:["https://img.alicdn.com/tfs/TB1bxv2H9zqK1RjSZFjXXblCFXa-800-270.jpg","https://img.alicdn.com/tfs/TB1xKDWHYPpK1RjSZFFXXa5PpXa-800-402.jpg","https://img.alicdn.com/tfs/TB1qqL4H3HqK1RjSZFPXXcwapXa-800-314.jpg","https://img.alicdn.com/tfs/TB1bxv2H9zqK1RjSZFjXXblCFXa-800-270.jpg"]},
       {taskName:"开裁日期",taskStatus:4,taskStatusName:"已完成",planFinishiTime:"2018-01-20-11:21:30",actualFinishiTime:"2018-01-20-11:21:30",swiper_w:72,img:["https://img.alicdn.com/tfs/TB1bxv2H9zqK1RjSZFjXXblCFXa-800-270.jpg"]},
@@ -27,24 +26,12 @@ Page({
       key: 'taskId',
       success: function(res) {
         
-=======
-    img:[
-      "../../image/camore.png"
-    ]
-  },
-  onLoad() {
-    dd.getStorage({
-      key: 'taskId',
-      success: function(res) {
-        dd.alert({content: '任务编码成：' + res.data.taskId});
->>>>>>> 9d68be664f89308f9e00e0da68f00a389e8f6be4
       },
       fail: function(res){
         dd.alert({content: res.errorMessage});
       }
     });
   },
-<<<<<<< HEAD
   listindex:function(tes){//获取当前点击下标
     let list_i=tes.currentTarget.dataset.index-1;
     this.setData({
@@ -83,27 +70,5 @@ Page({
         urls: _this.data.itemlist[i].img,
       });
     },300)
-=======
-  upimg:function(){
-    dd.chooseImage({
-      count: 1,
-      success: (res) => {
-        console.log(res);
-        let img= res.apFilePaths[0];
-        let imgarray=this.data.img;
-        imgarray.push(img);
-        console.log(imgarray);
-        this.setData({
-          img:imgarray
-        })
-      },
-    });
-  },
-  lookimg:function(){
-    dd.previewImage({
-      current: 0,
-      urls: this.data.img,
-    });
->>>>>>> 9d68be664f89308f9e00e0da68f00a389e8f6be4
   }
 });
